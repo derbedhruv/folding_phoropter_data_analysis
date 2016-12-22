@@ -2,6 +2,8 @@
 library(data.table)
 library(ggplot2)
 
+set.seed(123)
+
 # Read in, remove incomplete cases and convert relevant columns to numeric datatype
 # MAKE sure you are in the right folder and the CSV file is local
 julia_raw <- fread("JULIA data.csv")
@@ -14,6 +16,7 @@ julia$OR <- as.numeric(julia$OR)
 # Also remove the outliers which had the reading greater than 80
 # TODO: Keep seperate check box/factor/indicator covariate for these patients
 julia <- filter(julia, `Comments` == "")
+julia <- select(julia, -Comments)
 julia <- julia[!julia$`JULIA (final)` > 80, ]
 
 ###---------------- EDA PLOTS ----------------####
@@ -27,4 +30,29 @@ labs(x ="Refractive Error of patient eye measured by OR (Dioptres)", y="Folding 
 ggplot(data = julia) + geom_point(aes(y = `JULIA (final)`, x = `JULIA (initial)`))
 
 # plot the readings vs age
+ggplot(data = julia) + geom_point()
+
+###---------------- INITIAL MODEL ----------------####
+# take all covariates that make sense
+# start by removing the SR, OR and AR readings
+# We keep in the actual "OR" spherical reading since this is our observable
+data <- select(julia, -SR, -OR, -V16, -V17, -V19, -V20, -AR, -V22, -V23)
+data <- mutate(data, Y = julia$OR)  # add the OR as observable
+
+# Then we remove the axis and second distance columns
+# Since we are only interested in predicting the spherical refractive error right now
+# model1 <- lm(data = julia, OR ~ 1 + Gender + `JULIA #` + `JULIA (final)` + Age)
+data <- select(data, -`S. No`, -V8, -V9, -V10, -V12, -V13, -V14)
+
+# Split up a training and cross-validation set so that there's no bias introduced by our domain knowledge
+# and we do not overfit to the data (and can test generalization error)
+train.ind <- sample(1:nrow(data), 0.8*nrow(data))
+data.train <- data[train.ind, ]
+data.test <- data[-train.ind, ]
+
+# Then generate a model and understand what the covariates are predicting
+model1 <- lm(data = data.train, Y ~ .)
+plot(residuals(model1)) + abline(0,0)
+
+
 
