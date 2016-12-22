@@ -62,4 +62,6 @@ plot(residuals(model2)) + abline(0,0)
 step(lm(data=data.train, Y~1), direction="forward", scope = list(upper=lm(data=data.train, Y~.-`MR. No`)))
 ggplot(data=data.train) + geom_point(aes(x = Age, y = Y))
 
-
+# Remove NA values and calculate correlation coefficient
+d <- data.train[complete.cases(data.train),]
+cor(d$Age, d$Y)
