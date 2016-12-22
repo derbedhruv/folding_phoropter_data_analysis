@@ -1,6 +1,7 @@
 # Exploratory data analysis on the JULIA dataset
 library(data.table)
 library(ggplot2)
+library(dplyr)
 
 set.seed(123)
 
@@ -15,7 +16,7 @@ julia$OR <- as.numeric(julia$OR)
 # Remove rows with comments - as these patients had issues
 # Also remove the outliers which had the reading greater than 80
 # TODO: Keep seperate check box/factor/indicator covariate for these patients
-julia <- filter(julia, `Comments` == "")
+julia <- filter(julia, julia$Comments == "")
 julia <- select(julia, -Comments)
 julia <- julia[!julia$`JULIA (final)` > 80, ]
 
