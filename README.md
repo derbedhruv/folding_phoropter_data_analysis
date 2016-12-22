@@ -34,3 +34,4 @@ We will use the chi-squared test to quantify the independence of two categorical
 * All the patients were past patients of LVPEI
 
 # Initial model and interpretation
+The first model which was run was on all covariates and with MR No. included. This, as expected, gave a very high R squared ()
