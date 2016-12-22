@@ -19,6 +19,14 @@ Four independent devices were used to collected data and two Optometrist interns
 * Can we build a simple emperical linear regression model relating the measured value with the "gold standard" Refractive Error value, that generalizes well?
 * Can we then relate this linear model to the actual population model?
 
+The following is the plot the (final) measured readings w.r.t. the 'gold standard' or ground truth refractive errors.
+
+![Measurements vs ground truth](https://raw.githubusercontent.com/derbedhruv/folding_phoropter_data_analysis/master/plots/reading_vs_optom.jpeg)
+
+The following is the plot of the initial vs final readings on the device (see measurement protocol).
+
+![Final w.r.t. Initial](https://raw.githubusercontent.com/derbedhruv/folding_phoropter_data_analysis/master/plots/initial_vs_final.jpeg)
+
 We will use the chi-squared test to quantify the independence of two categorical variables. For continuous variables, we will use the Pearson coefficient.
 
 # Possible Sources of Sampling bias:
