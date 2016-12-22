@@ -7,7 +7,7 @@ The [folding phoropter](http://lvpmitra.com/phoropter) is an [award-winning devi
 
 [//]: # (Taken from http://stackoverflow.com/questions/14192709/is-it-possible-to-embed-youtube-vimeo-videos-in-markdown-using-a-c-sharp-markdow)
 
-![IMAGE ALT TEXT](http://img.youtube.com/vi/7etlqg5fsDI/0.jpg)](http://www.youtube.com/watch?v=7etlqg5fsDI "Folding Phoropter Assembly")
+[![IMAGE ALT TEXT](http://img.youtube.com/vi/7etlqg5fsDI/0.jpg)](http://www.youtube.com/watch?v=7etlqg5fsDI "Folding Phoropter Assembly")
 
 Data was collected at the Kallam Anji Reddy Campus of LVPEI during June 2016 on 125 refractive error patients and volunteers (250 eyes). The criteria for inclusion in the study was:
 * Adults (over 18 years of age)
