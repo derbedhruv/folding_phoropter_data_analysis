@@ -40,4 +40,8 @@ The first model which was run was on all covariates and with MR No. included. Th
 
 Removal of the MR No categorical covariate resulted in a better model, at least in terms of the residuals. The covariate `Age` had an extremely low p-value of 0.000569, indicating that there was a statistically significant relationship at the 0.001 significance level. The overall R² = 0.7245.
 
-The next step was to try a forward stepwise selection in R to select appropriate covariates.
+The next step was to try a forward stepwise selection in R to select appropriate covariates. This gave a massive reduction in AIC (from 215.41 to 11.28) with the addition of `JULIA (final)` and then another sizable reduction to 1.7 with the addition of `Age`. Thereafter, reductions were not as dramatic. This gives some insight that `Age` might also be an interesting covariate useful for predicting the refractive error. This makes sense as refractive error definitely has a relationship with age. The following is a plot of the two:
+
+![Y vs Age](https://raw.githubusercontent.com/derbedhruv/folding_phoropter_data_analysis/master/plots/Y_vs_Age.jpeg)
+
+There is clearly some relationship between the two, but this would need to be explored further. They had a Pearson correlation coefficient of 0.3179551. This is not too high and may go down with larger datasets.
