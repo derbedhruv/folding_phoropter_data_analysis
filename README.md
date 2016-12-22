@@ -33,5 +33,11 @@ We will use the chi-squared test to quantify the independence of two categorical
 * All the tests were done only on one day - since the optometrists were only free one day per week.
 * All the patients were past patients of LVPEI
 
-# Initial model and interpretation
-The first model which was run was on all covariates and with MR No. included. This, as expected, gave a very high R squared ()
+# Exploratory model and interpretation
+The first model which was run was on all covariates and with MR No. included. This, as expected, gave a very high coefficient of determination, R² = 0.9761. Of course it was overfitting to the data, as the residuals plot showed most points on the 0 line. 
+
+![Overfit](https://raw.githubusercontent.com/derbedhruv/folding_phoropter_data_analysis/master/plots/overfit_residuals.jpeg)
+
+Removal of the MR No categorical covariate resulted in a better model, at least in terms of the residuals. The covariate `Age` had an extremely low p-value of 0.000569, indicating that there was a statistically significant relationship at the 0.001 significance level. The overall R² = 0.7245.
+
+The next step was to try a forward stepwise selection in R to select appropriate covariates.
