@@ -56,6 +56,7 @@ model1 <- lm(data = data.train, Y ~ .)
 plot(residuals(model1)) + abline(0,0)
 
 # Slightly better model, excluding the categorical variables
+# interpret the model at http://reliawiki.org/index.php/Simple_Linear_Regression_Analysis#t_Tests
 model2 <- lm(data = data.train, Y ~ . -`MR. No`)
 plot(residuals(model2)) + abline(0,0)
 
