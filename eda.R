@@ -58,5 +58,8 @@ plot(residuals(model1)) + abline(0,0)
 model2 <- lm(data = data.train, Y ~ . -`MR. No`)
 plot(residuals(model2)) + abline(0,0)
 
+# Forward stepwise selection
+step(lm(data=data.train, Y~1), direction="forward", scope = list(upper=lm(data=data.train, Y~.-`MR. No`)))
+ggplot(data=data.train) + geom_point(aes(x = Age, y = Y))
 
 
